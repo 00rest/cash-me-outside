@@ -28,7 +28,14 @@ const userSchema = new Schema(
         validator: () => Promise.resolve(false),
         message: 'Email validation failed'
       }
+
     },
+    password: {
+      type: String,
+      required: true,
+      minlength: 5,
+    },
+  
     transactions: [
       {
         type: Schema.Types.ObjectId,
@@ -41,6 +48,20 @@ const userSchema = new Schema(
     id: false
   }
 );
+
+// jordan added to add pre-saved to create password
+userSchema.pre('save', async function (next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+
+  next();
+});
+userSchema.methods.isCorrectPassword = async function (password) {
+  return bcrypt.compare(password, this.password);
+};
+
 
 // Virtual property `friendCount` that counts how many friends this looser has
 userSchema.virtual('friendCount').get(function () { return `${this.friends.length}`});
