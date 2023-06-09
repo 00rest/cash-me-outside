@@ -2,13 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema(
   {
-    firstname: {
-      type: String,
-      required: true,
-      trimmed: true,
-      max_length: 50,
-    },
-    lastname: {
+    name: {
       type: String,
       required: true,
       trimmed: true,
@@ -58,13 +52,14 @@ userSchema.pre('save', async function (next) {
 
   next();
 });
+
 userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
 
 // Virtual property `friendCount` that counts how many friends this looser has
-userSchema.virtual('friendCount').get(function () { return `${this.friends.length}`});
+// userSchema.virtual('friendCount').get(function () { return `${this.friends.length}`});
 
 
 const User = model('user', userSchema);
