@@ -11,6 +11,7 @@ import {
 import { MDBTable, MDBTableHead, MDBTableBody, MDBCardHeader } from 'mdb-react-ui-kit';
 
 export default function App() {
+  
   return (
     <div>
       <MDBRow>
