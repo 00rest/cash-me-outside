@@ -7,10 +7,9 @@ const zelleRecipient = new Schema({
     trimmed: true,
     max_length: 50,
   },
-  email: {
+  zelle_email: {
     type: String,
     required: true,
-    unique: true,
     validate: {
       validator: () => Promise.resolve(false),
       message: 'Email validation failed'

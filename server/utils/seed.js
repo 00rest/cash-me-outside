@@ -1,7 +1,5 @@
-const db = require('../config/connection');
-const { User, Transaction } = require('../models');
-const userSeeds = require('./userSeeds.json');
-const transactionSeeds = require('./transactionSeeds.json');
+const connection = require('../config/connection');
+const { User } = require('../models');
 
 db.once('open', async () => {
   try {
