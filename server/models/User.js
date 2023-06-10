@@ -1,4 +1,8 @@
 const { Schema, model } = require('mongoose');
+const transactionSchema = require('./transactionSchema');
+const zelleRecipient = require('./zelleRecipient');
+const wireRecipient = require('./wireRecipient');
+
 
 const userSchema = new Schema(
   {
@@ -22,20 +26,15 @@ const userSchema = new Schema(
         validator: () => Promise.resolve(false),
         message: 'Email validation failed'
       }
-
     },
     password: {
       type: String,
       required: true,
       minlength: 5,
     },
-  
-    transactions: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'transactions',
-      }
-    ],
+    transactions: [ transactionSchema ],
+    zelleRecipients: [ zelleRecipient ],
+    wireRecipients: [ wireRecipient ],
   },
   {
     toJSON: { getters: true, virtuals: true },
@@ -56,10 +55,6 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
-
-
-// Virtual property `friendCount` that counts how many friends this looser has
-// userSchema.virtual('friendCount').get(function () { return `${this.friends.length}`});
 
 
 const User = model('user', userSchema);

@@ -7,7 +7,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Login from './pages/Login';
 
 function App() {
+
+const x = 1;
+
+if (x === 0){
+return (<Login/>);
+}else{
   return (
+  
     <BrowserRouter>
       <Navbar />
       <Routes>
@@ -18,5 +25,6 @@ function App() {
     </BrowserRouter>
   );
 }
+};
 
 export default App;
