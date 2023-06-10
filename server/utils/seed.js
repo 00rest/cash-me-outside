@@ -1,29 +1,21 @@
 const connection = require('../config/connection');
 const { User } = require('../models');
 
-db.once('open', async () => {
-  try {
-    await Transaction.deleteMany({});
-    await User.deleteMany({});
+const { users } = require('./data');
 
-    await User.create(userSeeds);
+connection.on('error', (err) => err);
 
-    for (let i = 0; i < transactionSeeds.length; i++) {
-      const { _id, transactionUser } = await Transaction.create(transactionSeeds[i]);
-      const user = await User.findOneAndUpdate(
-        { name: transactionUser },
-        {
-          $addToSet: {
-            transactions: _id,
-          },
-        }
-      );
-    }
-  } catch (err) {
-    console.error(err);
-    process.exit(1);
-  }
+connection.once('open', async () => {
+  console.log('connected');
 
-  console.log('all done!');
+  // Drop existing User
+  await User.deleteMany({});
+
+  // Add user to the collection and await the results
+  await User.collection.insertMany(users);
+
+  // Log out the seed data to indicate what should appear in the database
+  console.table(users);
+  console.info('Seeding complete! 🌱');
   process.exit(0);
 });
