@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Orest Panas",
+    "email": "orest@yahoo.com",
+    "password": "password12345",
+    "snn": "546789878"
+  },
+
+  {
+    "name": "Steeven Salony",
+    "email": "steeven@yahoo.com",
+    "password": "password12345",
+    "snn": "459923959"
+  },
+
+  {
+    "name": "Jordan Bethune",
+    "email": "jbethune37@gmail.com",
+    "password": "password12345",
+    "snn": "238866794"
+  }
+
+]
