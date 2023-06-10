@@ -13,7 +13,7 @@ import { MDBTable, MDBTableHead, MDBTableBody, MDBCardHeader } from 'mdb-react-u
 export default function App() {
   
   return (
-    <div>
+    <div style={{display: 'flex', justifyContent: 'center'}}>
       <MDBRow>
         <MDBCol sm='8'>
           <MDBCard border='primary' background='white' shadow='9'>
