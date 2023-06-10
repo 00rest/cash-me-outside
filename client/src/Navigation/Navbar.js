@@ -3,7 +3,7 @@ import React from "react";
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-primary">
-      <a className="navbar-brand text-white" href="./home">
+      <a className="navbar-brand" href="#">
         Cash Me Outside Bank
       </a>
       <button
@@ -21,27 +21,45 @@ const Navbar = () => {
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
           <li className="nav-item active">
-            <a className="nav-link text-white" href="account">
-              Account Activity <span className="sr-only">(current)</span>
+            <a className="nav-link" href="#">
+              Accounts <span className="sr-only">(current)</span>
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link text-white" href="transfer">
-              Transfer
+            <a className="nav-link" href="#">
+              Pay & Transfer
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link text-white" href="#">
+            <a className="nav-link" href="#">
               Withdraw
             </a>
           </li>
-          <li className="nav-item">
+          <li className="nav-item dropdown">
             <a
-              className="nav-link text-white"
-              href="/"
+              className="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
             >
-              Log Out
+              More
             </a>
+            <div
+              className="dropdown-menu"
+              aria-labelledby="navbarDropdownMenuLink"
+            >
+              <a className="dropdown-item" href="#">
+                Action
+              </a>
+              <a className="dropdown-item" href="#">
+                Another action
+              </a>
+              <a className="dropdown-item" href="#">
+                Something else here
+              </a>
+            </div>
           </li>
         </ul>
       </div>
