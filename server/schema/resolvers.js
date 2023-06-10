@@ -14,9 +14,16 @@ const resolvers = {
       const params = name ? { name } : {};
       return Transaction.find(params).sort({ createdAt: -1 });
     },
-    thought: async (parent, { thoughtId }) => {
+    transaction: async (parent, { thoughtId }) => {
       return Transaction.findOne({ _id: transactionId });
     },
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate('transactions');
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
   },
 
   Mutation: {
@@ -59,4 +66,5 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
   }}
-module.exports = resolvers;
+
+  module.exports = resolvers;
