@@ -1,36 +1,25 @@
 const { Schema, model, Types } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
+const transactionSchema = require('./transactionSchema');
 
-const transactionSchema = new Schema({
-  date: {
+const accountSchema = new Schema({
+  dateCreated: {
     type: Date,
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
   },
-  description: {
+  accountType: {
     type: String,
-    required: true,
-    minlength: 1,
+     minlength: 1,
     maxlength: 280,
-    trim: true,
-  },
-  transactionType: {
-    type: String,
-    required: true,
-    minlength: 1,
-    maxlength: 280,
-    trim: true,
-  },
-  amount: {
-    type: Schema.Types.Decimal128,
-    required: true,
     trim: true,
   },
   balance: {
     type: Schema.Types.Decimal128,
     required: true,
     trim: true,
-  }
+  },
+  transactions: [ transactionSchema ],
 },
 {
   toJSON: { getters: true, virtuals: true },
@@ -39,4 +28,4 @@ const transactionSchema = new Schema({
 );
 
 
-module.exports = transactionSchema;
+module.exports = accountSchema;

@@ -1,4 +1,14 @@
 const User = require('./User');
-const Transaction = require('./User')
+const transactionSchema = require('./transactionSchema')
+const wireRecipient = require('./wireRecipient');
+const zelleRecipient = require('./zelleRecipient');
+const accountSchema = require('./accountSchema');
 
-module.exports = { User, Transaction };
+
+module.exports = { 
+    User,
+    transactionSchema,
+    wireRecipient,
+    zelleRecipient,
+    accountSchema
+};
