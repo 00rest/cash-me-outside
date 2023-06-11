@@ -1,4 +1,4 @@
-//const { AuthenticationError } = require('apollo-server-express');
+const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
 
 const { signToken } = require('../utils/auth');
@@ -51,12 +51,12 @@ const resolvers = {
             { new: true }
   ); 
 },
-      createUser: async (parent, args) => {
-        const newUser = await User.create(args);
- // const token = signToken(user);
+//       createUser: async (parent, args) => {
+//         const newUser = await User.create(args);
+//  // const token = signToken(user);
 
-        return newUser;
-}
+//         return newUser;
+// }
 }
 }
 
