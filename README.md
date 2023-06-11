@@ -21,10 +21,10 @@ Do you hate having to go to the bank? Do you hate all the hidden fees for most o
 
 ## Installation
 ```md
-1. 
-2. 
-3. 
-4. 
+1. Download all the files here
+2. Install node.js
+3. Install npm i apollo-server-express
+4. cd server
 ```
 
 ## Usage
@@ -38,11 +38,10 @@ N/A
 
 ## Tests
 ```md
-1. 
-2. 
-3. 
-4.   
-5. 
+1. Type: npm start
+2. Open GraphQL
+4. Then apply the http link  
+5. End the express server when completed by pressing ctrl + c
 ```
 
 ## Questions
