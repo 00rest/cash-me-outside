@@ -2,16 +2,20 @@ import React from 'react';
 import { useLazyQuery, useQuery } from "@apollo/client";
 import { GET_USER_BY_ID} from '../utils/queries';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import auth from '../utils/auth';
 
 const HomePage = () => {
   //let userID;
 
+  const session = auth.getSession();
+  console.log(session);
+
   //const [getUser, { loading, error, data }] = useLazyQuery(GET_USER_BY_ID);
   const { loading, data, error } = useQuery(GET_USER_BY_ID, {
-    variables: { id: "64869102bd4d6584828f7dc9" }
+    variables: { id: session.userId }
   });
   const userData = data?.userById || [];
-  console.log(userData);
+  console.log("userData", userData);
 
   if (error) console.log(error);
 
