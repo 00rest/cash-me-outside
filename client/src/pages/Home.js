@@ -1,12 +1,15 @@
 import React from 'react';
-import { useLazyQuery } from "@apollo/client";
-import { GET_USER_BY_ID } from '../utils/queries';
+import { useLazyQuery, useQuery } from "@apollo/client";
+import { GET_USER_BY_ID} from '../utils/queries';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const HomePage = () => {
-  let userID;
+  //let userID;
 
-  const [getUser, { loading, error, data }] = useLazyQuery(GET_USER_BY_ID);
+  //const [getUser, { loading, error, data }] = useLazyQuery(GET_USER_BY_ID);
+  const { loading, data, error } = useQuery(GET_USER_BY_ID, {
+    variables: { id: "64869102bd4d6584828f7dc9" }
+  });
   const userData = data?.userById || [];
   console.log(userData);
 
@@ -16,7 +19,7 @@ const HomePage = () => {
     <div className="container mt-5 d-flex-column min-vh-100">
       <h1 className="mb-4">Welcome, {userData.name}</h1>
 
-      <div>
+      {/* <div>
         <form onSubmit={e => {
           e.preventDefault();
           getUser({ variables: { id: userID.value } });
@@ -28,30 +31,29 @@ const HomePage = () => {
           <br />
           <button type="submit">Get accounts</button>
         </form>
-      </div>
+      </div> */}
 
       <p>View your account balance and recent transactions.</p>
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-8">
           {loading
             ? (<div>Loading...</div>)
             : (
               <div>
-                <ul style={{ listStyle: 'none' }}>
-                  <li>{userData._id}</li>
-                  <li>{userData.name}</li>
-                  <li>{userData.email}</li>
-                  <li>{userData.ssn}</li>
-                </ul>
+                {/* <ul style={{ listStyle: 'none' }}>
+                  <li>Account# {userData._id}</li>
+                  <li>email: {userData.email}</li>
+
+                </ul> */}
 
                 {userData.accounts &&
                   <div>
                     {userData.accounts.map((x) => (
                       <div className="card" key={x._id} style={{ marginBottom: 10 }}>
                         <div className="card-body" >
-                          <h5 className="card-title">{x.accountType} Account Balance</h5>
-                          <p className="card-text">${x.balance}</p>
-                          <a href="/account" className="btn btn-primary">
+                          <h5 className="card-title">{x.accountType} Account</h5>
+                          <p className="card-text">Balance ${x.balance}</p>
+                          <a href="/accountactivity" className="btn btn-primary">
                             View Details
                             </a>
 
@@ -65,8 +67,8 @@ const HomePage = () => {
               </div>)
           }
         </div>
-        <div className="col-md-6">
-          <div className="card">
+        <div className="col-md-4">
+          <div className="card" style={{ marginBottom: 10 }}>
             <div className="card-body">
               <h5 className="card-title">Recent Transactions</h5>
               <ul className="list-group">
@@ -77,7 +79,18 @@ const HomePage = () => {
               <a href="account" className="btn btn-primary">View All</a>
             </div>
           </div>
+
+
+          <div className="card" style={{ marginBottom: 10 }}>
+            <div className="card-body">
+              <h5 className="card-title">Get our latest credit line</h5>
+              <h6>If you love being in debt, dont be shy and APPLY!</h6>
+              <a href="account" className="btn btn-primary">View All</a>
+            </div>
+          </div>
         </div>
+
+
       </div>
     </div>
   );

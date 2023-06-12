@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const WithdrawPage = () => {
   const [senderAccount, setsenderAccount] = useState('');
-  const [recipient, setrecipient] = useState('');
+  
   const [amount, setAmount] = useState('');
   const [error, setError] = useState('');
   const [transactionHistory, setTransactionHistory] = useState([]);
@@ -12,15 +12,14 @@ const WithdrawPage = () => {
     e.preventDefault();
 
     // Perform validation
-    if (!senderAccount || !recipient || !amount) {
-      setError('Sender, recipient, and amount are required');
+    if (!senderAccount || !amount) {
+      setError('Sender, and amount are required');
       return;
     }
 
     const newTransaction = {
       senderAccount,
-      recipient,
-      amount,
+        amount,
       date: new Date().toLocaleString() // Store the current date and time
     };
 
@@ -29,7 +28,7 @@ const WithdrawPage = () => {
 
     // Reset the form after the transfer
     setsenderAccount('');
-    setrecipient('');
+
     setAmount('');
     setError('');
   };
@@ -49,16 +48,7 @@ const WithdrawPage = () => {
             className="form-control"
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="recipient" className="form-label">To Account:</label>
-          <input
-            type="text"
-            id="recipient"
-            value={recipient}
-            onChange={(e) => setrecipient(e.target.value)}
-            className="form-control"
-          />
-        </div>
+
         <div className="mb-3">
           <label htmlFor="amount" className="form-label">Amount:</label>
           <input
@@ -77,7 +67,6 @@ const WithdrawPage = () => {
             {transactionHistory.map((transaction, index) => (
               <li className="list-group-item" key={index}>
                 <div>From: {transaction.senderAccount}</div>
-                <div>To: {transaction.recipient}</div>
                 <div>Amount: {transaction.amount}</div>
                 <div>Date: {transaction.date}</div>
               </li>
