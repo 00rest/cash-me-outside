@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useMutation } from '@apollo/client';
-import { LOGIN } from '../utils/mutations';
+import { LOGIN, SIGNUP } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 export default function Login(props) {
@@ -10,17 +10,45 @@ export default function Login(props) {
     setAuthMode(authMode === "signin" ? "signup" : "signin")
   }
 
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ email: '', password: '', fullName: '', ssn: '' });
   const [login, { error }] = useMutation(LOGIN);
+  const [signup, { suErr }] = useMutation(SIGNUP);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const mutationResponse = await login({
-        variables: { email: formState.email, password: formState.password },
-      });
-      const token = mutationResponse.data.login.token;
-      Auth.login(token);
+      if(authMode === 'signin') {
+        const mutationResponse = await login({
+          variables: { email: formState.email, password: formState.password },
+        });
+        const token = mutationResponse.data.login.token;
+        const name = mutationResponse.data.login.user.name;
+        const uId = mutationResponse.data.login.user._id;
+        
+        console.log("res: ", mutationResponse.data);
+
+        Auth.login(token, uId, name);
+      } else {
+        // console.log(formState);
+
+        const mutationResponse = await signup({
+          variables: { 
+            email: formState.email, 
+            password: formState.password,
+            name: formState.fullName, 
+            ssn: parseInt(formState.ssn || "0")
+        
+          },
+        });
+        const token = mutationResponse.data.login.token;
+        const name = mutationResponse.data.login.user.name;
+        const uId = mutationResponse.data.login.user._id
+        
+        console.log("res: ", mutationResponse.data);
+        // console.log("token: ", token);
+        
+        Auth.login(token, uId, name);
+      }
     } catch (e) {
       console.log(e);
     }
@@ -62,9 +90,10 @@ export default function Login(props) {
               <label>Password</label>
               <input
                 type="password"
+                name="password"
+                id="password"
                 className="form-control mt-1"
                 placeholder="Enter password"
-                id="pwd"
                 onChange={handleChange}
               />
             </div>
@@ -89,7 +118,7 @@ export default function Login(props) {
 
   return (
     <div className="Auth-form-container">
-      <form className="Auth-form">
+      <form className="Auth-form" onSubmit={handleFormSubmit}>
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Sign Up</h3>
           <div className="text-center">
@@ -101,15 +130,32 @@ export default function Login(props) {
           <div className="form-group mt-3">
             <label>Full Name</label>
             <input
-              type="email"
+              type="text"
+              name="fullName"
+              id="fullName"
+              onChange={handleChange}
               className="form-control mt-1"
               placeholder="e.g Jane Doe"
+            />
+          </div>
+          <div className="form-group mt-3">
+            <label>SSN</label>
+            <input
+              type="number"
+              name="ssn"
+              id="ssn"
+              onChange={handleChange}
+              className="form-control mt-1"
+              placeholder="XXX-XXX-XXXX"
             />
           </div>
           <div className="form-group mt-3">
             <label>Email address</label>
             <input
               type="email"
+              name="email"
+              id="email"
+              onChange={handleChange}
               className="form-control mt-1"
               placeholder="Email Address"
             />
@@ -118,6 +164,9 @@ export default function Login(props) {
             <label>Password</label>
             <input
               type="password"
+              name="password"
+              id="password"
+              onChange={handleChange}
               className="form-control mt-1"
               placeholder="Password"
             />
