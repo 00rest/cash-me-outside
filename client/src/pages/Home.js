@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const HomePage = () => {
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 d-flex-column min-vh-100">
       <h1 className="mb-4">Welcome to Cash Me Outsite Bank</h1>
       <p>View your account balance and recent transactions.</p>
       <div className="row">

@@ -4,6 +4,7 @@ import Navbar from "./Navigation/Navbar.js";
 import Home from './pages/Home.js';
 import Transfer from './pages/Transfer.js';
 import Accounts from './pages/Accounts.js';
+import Footer from './pages/Footer';
 import Zelle from './pages/Zelle.js';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Login from './pages/Login';
@@ -26,6 +27,7 @@ return (<Login/>);
         <Route path='/account' element={<Accounts />} /> 
         <Route path='/zelle' element={<Zelle />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

@@ -18,7 +18,7 @@ const AccountActivity = () => {
   ];
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 d-flex-column min-vh-100">
       <h1 className="mb-4">Account Activity (Checking)</h1>
       <table className="table table-striped">
         <thead>
