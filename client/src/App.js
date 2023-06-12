@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./Navigation/Navbar.js";
 import Home from './pages/Home.js';
 import Transfer from './pages/Transfer.js';
+import Accounts from './pages/Accounts.js';
+import Zelle from './pages/Zelle.js';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Login from './pages/Login';
 
@@ -21,6 +23,8 @@ return (<Login/>);
         <Route path='/' element={<Login />} />
         <Route path='/home' element={<Home />} /> 
         <Route path='/transfer' element={<Transfer />} /> 
+        <Route path='/account' element={<Accounts />} /> 
+        <Route path='/zelle' element={<Zelle />} />
       </Routes>
     </BrowserRouter>
   );
