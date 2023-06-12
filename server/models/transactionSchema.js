@@ -22,12 +22,12 @@ const transactionSchema = new Schema({
     trim: true,
   },
   amount: {
-    type: Schema.Types.Decimal128,
+    type: Number,
     required: true,
     trim: true,
   },
   balance: {
-    type: Schema.Types.Decimal128,
+    type: Number,
     required: true,
     trim: true,
   }

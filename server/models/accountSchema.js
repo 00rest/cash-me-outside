@@ -15,7 +15,7 @@ const accountSchema = new Schema({
     trim: true,
   },
   balance: {
-    type: Schema.Types.Decimal128,
+    type: Number,
     required: true,
     trim: true,
   },
