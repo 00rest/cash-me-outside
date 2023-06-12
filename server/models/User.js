@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const bcrypt = require('bcrypt');
 const zelleRecipient = require('./zelleRecipient');
 const wireRecipient = require('./wireRecipient');
 const accountSchema = require('./accountSchema');
@@ -16,16 +17,16 @@ const userSchema = new Schema(
       type: Number,
       required: true,
       trimmed: true,
-      max_length: 9,
+      max_length: 10,
     },
     email: {
       type: String,
       required: true,
       unique: true,
-      validate: {
-        validator: () => Promise.resolve(false),
-        message: 'Email validation failed'
-      }
+      // validate: {
+      //   validator: () => Promise.resolve(false),
+      //   message: 'Email validation failed'
+      // }
     },
     password: {
       type: String,
@@ -42,19 +43,19 @@ const userSchema = new Schema(
   }
 );
 
-// jordan added to add pre-saved to create password
-// userSchema.pre('save', async function (next) {
-//   if (this.isNew || this.isModified('password')) {
-//     const saltRounds = 10;
-//     this.password = await bcrypt.hash(this.password, saltRounds);
-//   }
+//jordan added to add pre-saved to create password
+userSchema.pre('save', async function (next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
 
-//   next();
-// });
+  next();
+});
 
-// userSchema.methods.isCorrectPassword = async function (password) {
-//   return bcrypt.compare(password, this.password);
-// };
+userSchema.methods.isCorrectPassword = async function (password) {
+  return bcrypt.compare(password, this.password);
+};
 
 
 const User = model('user', userSchema);
