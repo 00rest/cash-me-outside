@@ -2,9 +2,10 @@ import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./Navigation/Navbar.js";
 import Home from './pages/Home.js';
-import {Orest, Orest2} from './pages/orest.js';
+import { Orest, Orest2 } from './pages/orest.js';
 import Transfer from './pages/Transfer.js';
 import Accounts from './pages/Accounts.js';
+import Withdraw from './pages/Withdraw.js';
 import Footer from './pages/Footer';
 import Zelle from './pages/Zelle.js';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
@@ -23,19 +24,20 @@ function App() {
     return (<Login />);
   } else {
     return (
-      <ApolloProvider client = {client}>
+      <ApolloProvider client={client}>
         <BrowserRouter>
           <Navbar />
           <Routes>
             <Route path='/' element={<Login />} />
             <Route path='/home' element={<Home />} />
             <Route path='/transfer' element={<Transfer />} />
-        <Route path='/account' element={<Accounts />} /> 
-        <Route path='/zelle' element={<Zelle />} />
+            <Route path='/getcash' element={<Withdraw />} />
+            <Route path='/zelle' element={<Zelle />} />
             <Route path='/orest' element={<Orest />} />
             <Route path='/orest2' element={<Orest2 />} />
+            <Route path='/accountactivity' element={<Accounts />} />
           </Routes>
-      <Footer />
+          <Footer />
         </BrowserRouter>
       </ApolloProvider>
     );
