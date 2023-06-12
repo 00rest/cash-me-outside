@@ -8,6 +8,7 @@ const resolvers = {
     getAllUsers: async () => {
       return User.find();
     },
+
     user: async (parent, { _id }) => {
       const params = _id ? { _id } : {};
       return User.findOne( params );
