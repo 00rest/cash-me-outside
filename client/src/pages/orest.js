@@ -36,7 +36,7 @@ export function Orest2() {
     let userID;
 
     const [getUser, { loading, error, data }] = useLazyQuery(GET_USER_BY_ID);
-    const userData = data?.user || [];
+    const userData = data?.userById || [];
     console.log(userData);
     
     if (error) console.log(error);

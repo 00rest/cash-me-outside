@@ -16,7 +16,7 @@ query Query {
 
 export const GET_USER_BY_ID = gql`
 query Query($id: String!) {
-  user(_id: $id) {
+  userById(_id: $id) {
     _id
     name
     email
