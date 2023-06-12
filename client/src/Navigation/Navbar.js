@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-primary">
       <a className="navbar-brand text-white" href="./home">
-        Cash Me Outside Bank
+        Cash Me Outside
       </a>
       <button
         className="navbar-toggler"
@@ -21,13 +21,13 @@ const Navbar = () => {
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
           <li className="nav-item active">
-            <a className="nav-link text-white" href="account">
-              Account Activity <span className="sr-only">(current)</span>
+            <a className="nav-link text-white" href="getcash">
+              Ca$h <span className="sr-only">(current)</span>
             </a>
           </li>
           <li className="nav-item">
             <a className="nav-link text-white" href="transfer">
-              Transfer
+              Wire
             </a>
           </li>
           <li className="nav-item">

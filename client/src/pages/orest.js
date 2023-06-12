@@ -15,20 +15,17 @@ export function Orest() {
             {loading
                 ? (<div>Loading...</div>)
                 : (
-                    <ul>
+                    <ul style={{ listStyle: 'none' }}>
                         {userData.map((x) => (
                             <li key={x._id}>
                                 ID: {x._id}, ssn#: {x.ssn}, {x.name}, {x.email}
                             </li>
-                        ))
-                        }
+                        ))}
                     </ul>
                 )
             }
-
         </div>
     )
-
 };
 
 
@@ -60,7 +57,7 @@ export function Orest2() {
             {loading
                 ? (<div>Loading...</div>)
                 : (
-                    <ul>                      
+                    <ul style={{ listStyle: 'none' }}>                      
                         <li>{userData._id}</li>
                         <li>{userData.name}</li>
                         <li>{userData.email}</li>
@@ -68,7 +65,7 @@ export function Orest2() {
                         
                         {userData.accounts &&
                             
-                            <ul>                          
+                            <ul style={{ listStyle: 'none' }}>                          
                             {userData.accounts.map((x) => (
                                 <li key={x._id}>
                                 Type: {x.accountType}, Balance: ${x.balance}

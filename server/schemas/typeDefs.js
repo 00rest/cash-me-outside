@@ -35,13 +35,21 @@ type Auth {
 type Query {
     getAllUsers: [User]
     userById(_id: String!): User
-    me: User
+    user: User
 }
 
 type Mutation {
   addUser(name: String!, ssn: Int!, email: String!, password: String!): Auth
   login(email: String!, password: String!): Auth
   createAccount(_id: ID!, accountType: String!, balance: Float!): User
+  createTransaction(
+    userID: ID!,
+    accountID: ID,
+    description: String!,
+    type: String!,
+    amount: Float
+  ): User
+
 }
 `;
 

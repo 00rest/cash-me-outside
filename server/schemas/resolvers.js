@@ -57,12 +57,16 @@ const resolvers = {
         { new: true }
       );
     },
+
+    createTransaction: async (parent, { _id, accountType, balance }) => {
+      return await User.findOneAndUpdate(
+        { _id: _id },
+        { $addToSet: { accounts: { accountType, balance } } },
+        { new: true }
+      );
+    },
   }
 }
-
-
-
-
 
 
 
