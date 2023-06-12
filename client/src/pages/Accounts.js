@@ -1,213 +1,65 @@
 import React from 'react';
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
-  MDBRow,
-  MDBCol,
-  MDBBtn
-} from 'mdb-react-ui-kit';
-import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function App() {
+const AccountActivity = () => {
+  // Simulated account activity data
+  const checking = [
+    { id: 1, date: '2023-06-01', description: 'Deposit', amount: 1000 },
+    { id: 2, date: '2023-06-02', description: 'Withdrawal', amount: -500 },
+    { id: 3, date: '2023-06-03', description: 'Transfer', amount: -200 },
+    { id: 4, date: '2023-06-04', description: 'Deposit', amount: 1500 },
+  ];
+
+  const saving = [
+    { id: 1, date: '2023-06-01', description: 'Deposit', amount: 1000 },
+    { id: 2, date: '2023-06-02', description: 'Withdrawal', amount: -500 },
+    { id: 3, date: '2023-06-03', description: 'Transfer', amount: -200 },
+    { id: 4, date: '2023-06-04', description: 'Deposit', amount: 1500 },
+  ];
+
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <MDBRow>
-        <MDBCol sm='8'>
-          <MDBCard border='primary' background='white' shadow='9'>
-            <MDBCardBody>
-              <MDBCardTitle>Showing</MDBCardTitle>
-              <MDBCardText>
-                Checking Account
-              </MDBCardText>
-              <MDBBtn href='./home'>Overview</MDBBtn>
-            </MDBCardBody>
-          </MDBCard>
-          <MDBTable>
-            <MDBTableHead>
-              <tr>
-                <th scope='col'>Date</th>
-                <th scope='col'>Description</th>
-                <th scope='col'>Amount</th>
-                <th scope='col'>Balance</th>
-              </tr>
-            </MDBTableHead>
-            <MDBTableBody>
-              <tr>
-                <th scope='row'>6/7/2023</th>
-                <td>Zelle Payments</td>
-                <td>$300.00</td>
-                <td>$15000.00</td>
-              </tr>
-              <tr>
-                <th scope='row'>6/1/2023</th>
-                <td>ShopRite</td>
-                <td>$256.00</td>
-                <td>$14844.00</td>
-              </tr>
-              <tr>
-                <th scope='row'>12/7/2020</th>
-                <td>LA Fitness</td>
-                <td>$35.00</td>
-                <td>$14800.00</td>
-              </tr>
-              <tr>
-                <th scope='row'>12/7/2020</th>
-                <td>LA Fitness</td>
-                <td>$35.00</td>
-                <td>$14800.00</td>
-              </tr>
-              <tr>
-                <th scope='row'>12/7/2020</th>
-                <td>LA Fitness</td>
-                <td>$35.00</td>
-                <td>$14800.00</td>
-              </tr>
-              <tr>
-                <th scope='row'>12/7/2020</th>
-                <td>LA Fitness</td>
-                <td>$35.00</td>
-                <td>$14800.00</td>
-              </tr>
-              <tr>
-                <th scope='row'>12/7/2020</th>
-                <td>LA Fitness</td>
-                <td>$35.00</td>
-                <td>$14800.00</td>
-              </tr>
-              <tr>
-                <th scope='row'>12/7/2020</th>
-                <td>LA Fitness</td>
-                <td>$35.00</td>
-                <td>$14800.00</td>
-              </tr>
-              <tr>
-                <th scope='row'>12/7/2020</th>
-                <td>LA Fitness</td>
-                <td>$35.00</td>
-                <td>$14800.00</td>
-              </tr>
-            </MDBTableBody>
-          </MDBTable>
-
-          <MDBCard border='primary' background='white' shadow='9'>
-            <MDBCardBody>
-              <MDBCardTitle>Showing</MDBCardTitle>
-              <MDBCardText>
-                Savings Account
-              </MDBCardText>
-              <MDBBtn href='./home'>Overview</MDBBtn>
-            </MDBCardBody>
-          </MDBCard>
-
-          <MDBTable>
-            <MDBTableHead>
-              <tr>
-                <th scope='col'>Date</th>
-                <th scope='col'>Description</th>
-                <th scope='col'>Amount</th>
-                <th scope='col'>Balance</th>
-              </tr>
-            </MDBTableHead>
-            <MDBTableBody>
-              <tr>
-                <th scope='row'>6/7/2023</th>
-                <td>Zelle Payments</td>
-                <td>$300.00</td>
-                <td>$15000.00</td>
-              </tr>
-              <tr>
-                <th scope='row'>6/1/2023</th>
-                <td>ShopRite</td>
-                <td>$256.00</td>
-                <td>$14844.00</td>
-              </tr>
-              <tr>
-                <th scope='row'>12/7/2020</th>
-                <td>LA Fitness</td>
-                <td>$35.00</td>
-                <td>$14800.00</td>
-              </tr>
-              <tr>
-                <th scope='row'>12/7/2020</th>
-                <td>LA Fitness</td>
-                <td>$35.00</td>
-                <td>$14800.00</td>
-              </tr>
-              <tr>
-                <th scope='row'>12/7/2020</th>
-                <td>LA Fitness</td>
-                <td>$35.00</td>
-                <td>$14800.00</td>
-              </tr>
-              <tr>
-                <th scope='row'>12/7/2020</th>
-                <td>LA Fitness</td>
-                <td>$35.00</td>
-                <td>$14800.00</td>
-              </tr>
-              <tr>
-                <th scope='row'>12/7/2020</th>
-                <td>LA Fitness</td>
-                <td>$35.00</td>
-                <td>$14800.00</td>
-              </tr>
-              <tr>
-                <th scope='row'>12/7/2020</th>
-                <td>LA Fitness</td>
-                <td>$35.00</td>
-                <td>$14800.00</td>
-              </tr>
-              <tr>
-                <th scope='row'>12/7/2020</th>
-                <td>LA Fitness</td>
-                <td>$35.00</td>
-                <td>$14800.00</td>
-              </tr>
-            </MDBTableBody>
-          </MDBTable>
-
-        </MDBCol>
-        <MDBCol sm='4'>
-          <MDBCard border='primary' background='white' shadow='9'>
-            <MDBCardBody>
-              <MDBCardTitle>Customer Insights</MDBCardTitle>
-              <MDBCardText>
-                Strategic, interactive customer insights that can help Cash Me Outside Merchants grow their business
-              </MDBCardText>
-              <MDBBtn href='#'>More Detail</MDBBtn>
-            </MDBCardBody>
-          </MDBCard>
-          <MDBCard border='primary' background='white' shadow='9'>
-            <MDBCardBody>
-              <MDBCardTitle>Customer Insights</MDBCardTitle>
-              <MDBCardText>
-                Strategic, interactive customer insights that can help Cash Me Outside Merchants grow their business
-              </MDBCardText>
-              <MDBBtn href='#'>More Detail</MDBBtn>
-            </MDBCardBody>
-          </MDBCard>
-          <MDBCard border='primary' background='white' shadow='9'>
-            <MDBCardBody>
-              <MDBCardTitle>Customer Insights</MDBCardTitle>
-              <MDBCardText>
-                Strategic, interactive customer insights that can help Cash Me Outside Merchants grow their business
-              </MDBCardText>
-              <MDBBtn href='#'>More Detail</MDBBtn>
-            </MDBCardBody>
-          </MDBCard>
-          <MDBCard border='primary' background='white' shadow='9'>
-            <MDBCardBody>
-              <MDBCardTitle>Customer Insights</MDBCardTitle>
-              <MDBCardText>
-                Strategic, interactive customer insights that can help Cash Me Outside Merchants grow their business
-              </MDBCardText>
-              <MDBBtn href='#'>More Detail</MDBBtn>
-            </MDBCardBody>
-          </MDBCard>
-        </MDBCol>
-      </MDBRow>
+    <div className="container mt-5 d-flex-column min-vh-100">
+      <h1 className="mb-4">Account Activity (Checking)</h1>
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Description</th>
+            <th scope="col">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {checking.map((activity) => (
+            <tr key={activity.id}>
+              <td>{activity.date}</td>
+              <td>{activity.description}</td>
+              <td>{activity.amount}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      
+      <h1 className="mb-4">Account Activity (Saving)</h1>
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Description</th>
+            <th scope="col">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {saving.map((activity) => (
+            <tr key={activity.id}>
+              <td>{activity.date}</td>
+              <td>{activity.description}</td>
+              <td>{activity.amount}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
-}
+};
+
+export default AccountActivity;
