@@ -1,54 +1,91 @@
-import React from 'react';
-import Form from 'react-bootstrap/Form';
-import { MDBTable, MDBTableBody } from 'mdb-react-ui-kit';
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function App() {
+const TransferPage = () => {
+  const [senderAccount, setsenderAccount] = useState('');
+  const [recipient, setrecipient] = useState('');
+  const [amount, setAmount] = useState('');
+  const [error, setError] = useState('');
+  const [transactionHistory, setTransactionHistory] = useState([]);
+
+  const handleTransfer = (e) => {
+    e.preventDefault();
+
+    // Perform validation
+    if (!senderAccount || !recipient || !amount) {
+      setError('Sender, recipient, and amount are required');
+      return;
+    }
+
+    const newTransaction = {
+      senderAccount,
+      recipient,
+      amount,
+      date: new Date().toLocaleString() // Store the current date and time
+    };
+
+    // Update the transaction history
+    setTransactionHistory([...transactionHistory, newTransaction]);
+
+    // Reset the form after the transfer
+    setsenderAccount('');
+    setrecipient('');
+    setAmount('');
+    setError('');
+  };
+
   return (
-    <div className='transfer'>
-      <div style={{display: 'flex', justifyContent: 'center'}}>
-        <h1>Schedule A Transfer Payment</h1>
-      </div>
-      <MDBTable style={{display: 'flex', justifyContent: 'center'}}>
-        <MDBTableBody>
-          <tr>
-            <th colSpan={2}>Step 1: Select a From Account</th>
-          </tr>
-          <tr>
-            <td>From:</td>
-            <td><Form.Select aria-label="Default select example">
-              <option>Select an Account</option>
-              <option value="1">Checking Account</option>
-              <option value="2">Savings Account</option>
-            </Form.Select></td>
-          </tr>
-          <tr>
-            <th colSpan={2}>Step 2: Select a From To Account</th>
-          </tr>
-          <tr>
-            <td>To:</td>
-            <td><Form.Select aria-label="Default select example">
-              <option>Select an Account</option>
-              <option value="1">Checking Account</option>
-              <option value="2">Savings Account</option>
-            </Form.Select></td>
-          </tr>
-          <tr>
-            <th colSpan={2}>Step 3: Choose Amount and Date</th>
-          </tr>
-          <tr>
-            <td>Amount:</td>
-            <td>
-            <Form.Control type="text" />
-            </td>
-          </tr>
-          <tr>
-            <td>Date:</td>
-            <td>
-            <Form.Control type="date" />
-            </td>
-          </tr>
-        </MDBTableBody>
-      </MDBTable>
+    <div className="container mt-5">
+      <h1 className="mb-4">Transfer Money</h1>
+      {error && <div className="alert alert-danger">{error}</div>}
+      <form onSubmit={handleTransfer}>
+        <div className="mb-3">
+          <label htmlFor="senderAccount" className="form-label">From Account:</label>
+          <input
+            type="text"
+            id="senderAccount"
+            value={senderAccount}
+            onChange={(e) => setsenderAccount(e.target.value)}
+            className="form-control"
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="recipient" className="form-label">To Account:</label>
+          <input
+            type="text"
+            id="recipient"
+            value={recipient}
+            onChange={(e) => setrecipient(e.target.value)}
+            className="form-control"
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="amount" className="form-label">Amount:</label>
+          <input
+            type="number"
+            id="amount"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            className="form-control"
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">Transfer</button>
+      </form>
+      <div className="col-md-6">
+          <h3>Transaction History</h3>
+          <ul className="list-group">
+            {transactionHistory.map((transaction, index) => (
+              <li className="list-group-item" key={index}>
+                <div>From: {transaction.senderAccount}</div>
+                <div>To: {transaction.recipient}</div>
+                <div>Amount: {transaction.amount}</div>
+                <div>Date: {transaction.date}</div>
+              </li>
+            ))}
+          </ul>
+        </div>
     </div>
   );
-}
+};
+
+export default TransferPage;
