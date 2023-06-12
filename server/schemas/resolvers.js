@@ -8,10 +8,12 @@ const resolvers = {
     getAllUsers: async () => {
       return User.find();
     },
+
     user: async (parent, { _id }) => {
       const params = _id ? { _id } : {};
       return User.findOne( params );
     },
+
     // transactions: async (parent, { name }) => {
     //   const params = name ? { name } : {};
     //   return Transaction.find(params).sort({ createdAt: -1 });

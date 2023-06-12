@@ -10,7 +10,7 @@ import {
 } from 'mdb-react-ui-kit';
 import { MDBTable, MDBTableHead, MDBTableBody, MDBCardHeader } from 'mdb-react-ui-kit';
 
-export default function App() {
+export default function Home() {
   
   return (
     <div style={{display: 'flex', justifyContent: 'center'}}>
