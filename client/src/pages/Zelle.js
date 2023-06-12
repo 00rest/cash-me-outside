@@ -35,7 +35,7 @@ const ZellePage = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 d-flex-column min-vh-100">
       <h1 className="mb-4">Zelle</h1>
       <div className="row">
         <div className="col-md-6">

@@ -35,7 +35,7 @@ const TransferPage = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 d-flex-column min-vh-100">
       <h1 className="mb-4">Transfer Money</h1>
       {error && <div className="alert alert-danger">{error}</div>}
       <form onSubmit={handleTransfer}>
