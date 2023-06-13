@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLazyQuery, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { GET_USER_BY_ID} from '../utils/queries';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import auth from '../utils/auth';
@@ -89,12 +89,20 @@ const HomePage = () => {
             <div className="card-body">
               <h5 className="card-title">Get our latest credit line</h5>
               <h6>If you love being in debt, dont be shy and APPLY!</h6>
-              <a href="account" className="btn btn-primary">View All</a>
+              <a href="account" className="btn btn-primary">View offer</a>
+            </div>
+          </div>
+          <div className="card" style={{ marginBottom: 10 }}>
+            <div className="card-body">
+              <h5 className="card-title">Even more spam here</h5>
+              <h6>APPLY! APPLY! APPLY!</h6>
+              <a href="account" className="btn btn-primary">View offer</a>
             </div>
           </div>
         </div>
 
 
+       
       </div>
     </div>
   );
