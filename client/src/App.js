@@ -11,7 +11,7 @@ import Zelle from './pages/Zelle.js';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Login from './pages/Login';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import NewAccount from './pages/NewAccount.js';
+import auth from './utils/auth';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -19,16 +19,16 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const session = auth.getSession();
 
-  const x = 1;
-
-  if (x === 0) {
-    return (<Login />);
-  } else {
-    return (
-      <ApolloProvider client={client}>
-        <BrowserRouter>
-          <Navbar />
+  return (
+    <ApolloProvider client={client}>
+      <BrowserRouter>
+        {session.userId && <Navbar />}
+        <Routes>
+          <Route path='/' element={<Login />} />
+        </Routes>
+        {session.userId &&
           <Routes>
             <Route path='/' element={<Login />} />
             <Route path='/home' element={<Home />} />
@@ -38,13 +38,11 @@ function App() {
             <Route path='/orest' element={<Orest />} />
             <Route path='/orest2' element={<Orest2 />} />
             <Route path='/accountactivity' element={<Accounts />} />
-            <Route path='/new-account' element={<NewAccount />} />
-          </Routes>
-          <Footer />
-        </BrowserRouter>
-      </ApolloProvider>
-    );
-  }
+          </Routes>}
+        <Footer />
+      </BrowserRouter>
+    </ApolloProvider>
+  );
 };
 
 export default App;
