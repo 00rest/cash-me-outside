@@ -9,6 +9,11 @@ query Query {
     ssn
     accounts {
       _id
+      accountType
+      balance
+      transactions{
+        _id
+      }
     }
   }
 }

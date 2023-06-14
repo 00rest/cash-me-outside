@@ -31,7 +31,7 @@ const resolvers = {
 
       return { token, user };
     },
-    
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -49,7 +49,7 @@ const resolvers = {
 
       return { token, user };
     },
-    
+
     createAccount: async (parent, { _id, accountType, balance }) => {
       return await User.findOneAndUpdate(
         { _id: _id },
@@ -71,3 +71,9 @@ const resolvers = {
 
 
 module.exports = resolvers;
+
+
+
+// let userData = { productCode: "4pf" }
+// let dataToBeUpdated = { claims: ["abc", "def"] }
+// ProductModel.findOneAndUpdate({ "products.productCode": userData.productCode }, { $set: { "products.$": dataToBeUpdated } })

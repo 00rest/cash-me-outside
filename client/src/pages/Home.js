@@ -1,8 +1,10 @@
 import React from 'react';
 import { useQuery } from "@apollo/client";
-import { GET_USER_BY_ID} from '../utils/queries';
+import { GET_USER_BY_ID } from '../utils/queries';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import auth from '../utils/auth';
+import AccountActivity from './Accounts'
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   //let userID;
@@ -56,11 +58,11 @@ const HomePage = () => {
                       <div className="card" key={x._id} style={{ marginBottom: 10 }}>
                         <div className="card-body" >
                           <h5 className="card-title">{x.accountType} Account</h5>
-                          <p className="card-text">Balance ${x.balance}</p>
-                          <a href="/accountactivity" className="btn btn-primary">
-                            View Details
-                            </a>
-
+                          <p className="card-text">Balance ${x.balance}</p>   
+                          <Link to="/accountactivity" state={{ "account": x }}>
+                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid*/}
+                            <a className="btn btn-primary"> View Details </a>
+                          </Link>
                         </div>
                       </div>
 
@@ -89,20 +91,20 @@ const HomePage = () => {
             <div className="card-body">
               <h5 className="card-title">Get our latest credit line</h5>
               <h6>If you love being in debt, dont be shy and APPLY!</h6>
-              <a href="account" className="btn btn-primary">View offer</a>
+              <a href="https://creditcards.chase.com/?CELL=6TKV" className="btn btn-primary">View offer</a>
             </div>
           </div>
           <div className="card" style={{ marginBottom: 10 }}>
             <div className="card-body">
               <h5 className="card-title">Even more spam here</h5>
               <h6>APPLY! APPLY! APPLY!</h6>
-              <a href="account" className="btn btn-primary">View offer</a>
+              <a href="https://www.chase.com/personal/mortgage" className="btn btn-primary">View offer</a>
             </div>
           </div>
         </div>
 
 
-       
+
       </div>
     </div>
   );
