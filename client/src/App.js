@@ -12,6 +12,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Login from './pages/Login';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import auth from './utils/auth';
+import NewAccount from './pages/NewAccount';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -38,6 +39,7 @@ function App() {
             <Route path='/orest' element={<Orest />} />
             <Route path='/orest2' element={<Orest2 />} />
             <Route path='/accountactivity' element={<Accounts />} />
+            <Route path='/new-account' element={<NewAccount />} />
           </Routes>}
         <Footer />
       </BrowserRouter>
