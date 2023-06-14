@@ -3,7 +3,6 @@ import { useQuery } from "@apollo/client";
 import { GET_USER_BY_ID } from '../utils/queries';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import auth from '../utils/auth';
-import AccountActivity from './Accounts'
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
