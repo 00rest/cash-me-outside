@@ -11,9 +11,6 @@ query Query {
       _id
       accountType
       balance
-      transactions{
-        _id
-      }
     }
   }
 }
@@ -30,6 +27,13 @@ query Query($id: String!) {
       _id
       accountType
       balance
+      transactions{
+        _id
+        description
+        date
+        type
+        amount
+      }
     }
   }
 }

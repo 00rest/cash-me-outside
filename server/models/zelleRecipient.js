@@ -10,10 +10,6 @@ const zelleRecipient = new Schema({
   zelle_email: {
     type: String,
     required: true,
-    validate: {
-      validator: () => Promise.resolve(false),
-      message: 'Email validation failed'
-    }
   },
 },
 {

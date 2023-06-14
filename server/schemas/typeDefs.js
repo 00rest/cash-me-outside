@@ -1,6 +1,17 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+type zelleRecipient {
+  _id: ID
+  name: String
+  zelle_email: String
+}
+
+type wireRecipient {
+  _id: ID
+  name: String
+  accountNumber: String
+}
 
 type transactionSchema {
   _id: ID
@@ -25,6 +36,8 @@ type User {
     ssn: Int
     email: String
     accounts: [accountSchema]
+    zelleRecipients: [zelleRecipient]
+    wireRecipients: [wireRecipient]
   }
 
 type Auth {
@@ -33,15 +46,23 @@ type Auth {
   }
 
 type Query {
+    getZelle(_id: ID!): zelleRecipient
     getAllUsers: [User]
     userById(_id: String!): User
     user: User
+    ZelleRecipientsById(_id: String!): User
 }
 
 type Mutation {
+  
   addUser(name: String!, ssn: Int!, email: String!, password: String!): Auth
+  
   login(email: String!, password: String!): Auth
+  
   createAccount(_id: ID!, accountType: String!, balance: Float!): User
+  
+  createZelleRecipient(_id: ID!, zelle_email: String!, name: String!): User
+  
   createTransaction(
     userID: ID!,
     accountID: ID,
