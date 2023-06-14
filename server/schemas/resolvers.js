@@ -14,6 +14,11 @@ const resolvers = {
       return User.findOne(params);
     },
 
+    getZelle: async (parent, { _id }) => {
+      const params = _id ? { _id } : {};
+      return User.findOne({ 'zelleRecipient._id': params });
+    },
+
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id)
@@ -58,12 +63,41 @@ const resolvers = {
       );
     },
 
-    createTransaction: async (parent, { _id, accountType, balance }) => {
+    createZelleRecipient: async (parent, { _id, zelle_email, name }) => {
       return await User.findOneAndUpdate(
         { _id: _id },
-        { $addToSet: { accounts: { accountType, balance } } },
+        { $addToSet: { zelleRecipients: { zelle_email, name } } },
         { new: true }
       );
+    },
+
+    createTransaction: async (parent, { userID, accountID, description, type, amount }) => {
+      const userRec = await User.findById(userID);
+      const account = userRec.accounts.find(a => a._id == accountID);
+
+      if (!!account) {
+        if (!account.transactions) {
+          account.transactions = [];
+        }
+
+        const newBalance = account.balance - amount;
+
+        account.transactions.push({
+          amount: amount,
+          balance: newBalance,
+          description: description,
+          date: new Date(),
+          transactionType: type
+        });
+
+        account.balance = newBalance;
+
+        userRec.save();
+      } else {
+        throw "Account not found";
+      }
+
+      return userRec;
     },
   }
 }
