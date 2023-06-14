@@ -2,8 +2,8 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: "#003366", color: "white" }}>
-      <a className="navbar-brand text-white" href="./home">
+    <nav className="navbar navbar-expand-sm navbar-light" style={{ backgroundColor: "#003366", color: "white" }}>
+      <a className="navbar-brand text-white" href="./home" style={{ marginLeft: 15 }}>
         Cash Me Outside
       </a>
       <button
