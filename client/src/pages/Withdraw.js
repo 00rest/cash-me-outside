@@ -61,7 +61,7 @@ const WithdrawPage = () => {
         variables: { 
           userID: userData.userId,
           accountID: senderAccount,
-          description: "Cash withdrawal on " + new Date().toLocaleString(),
+          description: "ATM cash withdrawal",
           type: "CASH",
           amount: parseFloat(amount || 0)
         }
@@ -112,7 +112,7 @@ const WithdrawPage = () => {
           <label htmlFor="senderAccount" className="form-label" style={{marginRight: "2ch" }}>From Account:</label>
           <select name='senderAccount' id='senderAccount' value={senderAccount} onChange={(e) => setsenderAccount(e.target.value)}>
             <option value="">(Please select an account)</option>
-            {accounts.map(a => <option value={a._id}>({a.accountType.toUpperCase()}) - {a._id}: ${a.balance}</option>)}
+            {accounts.map(a => <option key={a._id} value={a._id}>({a.accountType.toUpperCase()}) - {a._id}: ${a.balance}</option>)}
           </select>
           {/* <input
             type="text"

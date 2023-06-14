@@ -23,6 +23,11 @@ query Query($id: String!) {
     name
     email
     ssn
+    zelleRecipients{
+      _id
+      name
+      zelle_email
+    }
     accounts {
       _id
       accountType
@@ -31,8 +36,9 @@ query Query($id: String!) {
         _id
         description
         date
-        type
+        transactionType
         amount
+        balance
       }
     }
   }

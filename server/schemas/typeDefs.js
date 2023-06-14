@@ -17,7 +17,7 @@ type transactionSchema {
   _id: ID
   date: String
   description: String
-  type: String
+  transactionType: String
   amount: Float
   balance: Float
 }
