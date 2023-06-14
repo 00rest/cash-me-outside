@@ -40,9 +40,9 @@ export default function Login(props) {
         
           },
         });
-        const token = mutationResponse.data.login.token;
-        const name = mutationResponse.data.login.user.name;
-        const uId = mutationResponse.data.login.user._id
+        const token = mutationResponse.data.addUser.token;
+        const name = mutationResponse.data.addUser.user.name;
+        const uId = mutationResponse.data.addUser.user._id
         
         console.log("res: ", mutationResponse.data);
         // console.log("token: ", token);
