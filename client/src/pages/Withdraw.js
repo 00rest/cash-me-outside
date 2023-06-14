@@ -104,7 +104,7 @@ const WithdrawPage = () => {
   }
 
   return (
-    <div className="container mt-5 d-flex-column min-vh-100">
+    <div className="container mt-5 d-flex-column min-vh-100  col-md-8">
       <h1 className="mb-4">Withdraw Money</h1>
       {error && <div className="alert alert-danger">{error}</div>}
       <form onSubmit={handleTransfer}>
@@ -135,13 +135,13 @@ const WithdrawPage = () => {
         </div>
         <button type="submit" className="btn btn-primary">Transfer</button>
       </form>
-      <div className="col-md-6" style={{marginTop: "5ch"}}>
+      <div style={{marginTop: "5ch"}}>
           <h3>Transaction History</h3>
           <ul className="list-group">
             {transactionHistory.map((transaction, index) => (
-              <li className="list-group-item" key={index}>
+              <li className="list-group-item" key={index} >
                 <div>From: {transaction.senderAccount}</div>
-                <div>Amount: ${transaction.amount}</div>
+                <div className='col-md-6'>Amount: ${transaction.amount}</div>
                 <div>Date: {transaction.date}</div>
               </li>
             ))}
