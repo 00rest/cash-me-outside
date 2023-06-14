@@ -11,6 +11,7 @@ import Zelle from './pages/Zelle.js';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Login from './pages/Login';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+
 const client = new ApolloClient({
   uri: '/graphql',
   cache: new InMemoryCache(),
