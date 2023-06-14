@@ -26,7 +26,7 @@ const AccountActivity = () => {
   if (!accData.transactions.length) {
     return (
         <div className="container mt-5 d-flex-column min-vh-100">
-          <h1 className="mb-4">Account Activity ({accData.accountType} - {accData._id})</h1>
+          <h3 className="mb-4">{accData.accountType} Account Activity <span style={{ fontSize: 'medium' }}>({accData._id})</span></h3>
           <h3 style={{ text: "center" }}>No activity found</h3>
           <img alt={"Loser"} src={'./images/trump.jpg'} />
         </div>
@@ -35,14 +35,16 @@ const AccountActivity = () => {
   else {
     return (
       <div className="container mt-5 d-flex-column min-vh-100">
-        <h1 className="mb-4">Account Activity ({accData.accountType} - {accData._id})</h1>
+        <h3 className="mb-4">{accData.accountType} Account Activity <span style={{ fontSize: 'medium' }}>({accData._id})</span></h3>
         {
           <table className="table table-striped">
             <thead>
               <tr>
                 <th scope="col">Date</th>
                 <th scope="col">Description</th>
+                <th scope="col">Type</th>
                 <th scope="col">Amount</th>
+                <th scope="col">Balance</th>
               </tr>
             </thead>
             <tbody>
@@ -50,7 +52,9 @@ const AccountActivity = () => {
                 <tr key={activity._id}>
                   <td>{activity.date}</td>
                   <td>{activity.description}</td>
+                  <td>{activity.transactionType}</td>
                   <td>${activity.amount}</td>
+                  <td>${activity.balance}</td>
                 </tr>
               ))}
             </tbody>

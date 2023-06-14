@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-// export const TRANSACTION_TYPE = "CASH" | "ZELLE" | "TRANSFER";
+export const TRANSACTION_TYPE = "CASH" | "ZELLE" | "WIRE";
 
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
@@ -67,7 +67,7 @@ export const ADD_TRANSACTION = gql`
           _id
           description
           date
-          type
+          transactionType
           amount
         }
       }
