@@ -29,12 +29,12 @@ const AccountActivity = () => {
         <div className="container mt-5 d-flex-column min-vh-100">
           <h1 className="mb-4">Account Activity ({accData.accountType} - {accData._id})</h1>
 
-          <h3>No activity found</h3>
+          <h3 style={{ text: "center" }}>No activity found</h3>
+          <img alt={"Loser"} src={'./images/trump.jpg'} />
 
   
         </div>
       );
-
     
   } 
   else {
