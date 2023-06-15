@@ -44,7 +44,7 @@ const HomePage = () => {
                           <p className="card-text">Balance ${x.balance}</p>
                           <Link to="/accountactivity" state={{ "account": x }}>
 
-                            <button className="btn btn-primary"> View Details </button>
+                            <button className="btn btn-light" style={{ backgroundColor: "#01796F", color: "white" }}> View Details </button>
                           </Link>
                         </div>
                       </div>
@@ -54,7 +54,7 @@ const HomePage = () => {
                   (<div style={{ margin: "1ch 0 4ch" }}>No accounts found</div>)
                 }
 
-                <Link className="btn btn-primary" to={'/new-account'}>Open New Account</Link>
+                <Link className="btn btn-light" style={{ backgroundColor: "#01796F", color: "white" }} to={'/new-account'}>Open New Account</Link>
 
               </div>)
           }
@@ -68,7 +68,7 @@ const HomePage = () => {
                 <li className="list-group-item">Withdrawal: $500.00</li>
                 <li className="list-group-item">Transfer: -$200.00</li>
               </ul>
-              <Link to="/account" className="btn btn-primary">View All</Link>
+              <Link to="/account" className="btn btn-light" style={{ backgroundColor: "#01796F", color: "white" }}>View All</Link>
             </div>
           </div>
 
@@ -77,14 +77,14 @@ const HomePage = () => {
             <div className="card-body">
               <h5 className="card-title">Get our latest credit line</h5>
               <h6>If you love being in debt, dont be shy and APPLY!</h6>
-              <Link rel='credit' to="https://creditcards.chase.com/?CELL=6TKV" className="btn btn-primary">View offer</Link>
+              <Link rel='credit' to="https://creditcards.chase.com/?CELL=6TKV" className="btn btn-light" style={{ backgroundColor: "#01796F", color: "white" }}>View offer</Link>
             </div>
           </div>
           <div className="card" style={{ marginBottom: 10 }}>
             <div className="card-body">
               <h5 className="card-title">Even more spam here</h5>
               <h6>APPLY! APPLY! APPLY!</h6>
-              <Link rel='more credit' to="https://www.chase.com/personal/mortgage" className="btn btn-primary">View offer</Link>
+              <Link rel='more credit' to="https://www.chase.com/personal/mortgage" className="btn btn-light" style={{ backgroundColor: "#01796F", color: "white" }}>View offer</Link>
             </div>
           </div>
         </div>
