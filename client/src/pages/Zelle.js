@@ -62,19 +62,17 @@ function ZellePage() {
       }
       return recipient;
     });
-  
+
     const transaction = {
       recipient: updatedRecipients[index],
       date: new Date().toLocaleString(),
     };
-  
+
     setRecipients(updatedRecipients);
     setTransactions([...transactions, transaction]);
     setShowAmountMemo(false);
     setErr('');
   };
-  
-  
 
   return (
     <div className="container d-flex-column min-vh-100">
@@ -176,29 +174,29 @@ function ZellePage() {
             {transactions.length === 0 ? (
               <p>No transactions has been made yet yet</p>
             ) : (
-            <Card style={{ backgroundColor: "#003366", color: "white" }}>
-              <ListGroup variant="flush">
-                {transactions.map((transaction, index) => (
-                  <ListGroup.Item key={index}>
-                    <div>
-                      <strong>Date:</strong> {transaction.date}
-                    </div>
-                    <div>
-                      <strong>Name:</strong> {transaction.recipient.name}
-                    </div>
-                    <div>
-                      <strong>Email:</strong> {transaction.recipient.email}
-                    </div>
-                    <div>
-                      <strong>Amount:</strong> {transaction.recipient.amount}
-                    </div>
-                    <div>
-                      <strong>Memo:</strong> {transaction.recipient.memo}
-                    </div>
-                  </ListGroup.Item>
-                ))}
-              </ListGroup>
-            </Card>
+              <Card style={{ backgroundColor: "#003366", color: "white" }}>
+                <ListGroup variant="flush">
+                  {transactions.map((transaction, index) => (
+                    <ListGroup.Item key={index}>
+                      <div>
+                        <strong>Date:</strong> {transaction.date}
+                      </div>
+                      <div>
+                        <strong>Name:</strong> {transaction.recipient.name}
+                      </div>
+                      <div>
+                        <strong>Email:</strong> {transaction.recipient.email}
+                      </div>
+                      <div>
+                        <strong>Amount:</strong> {transaction.recipient.amount}
+                      </div>
+                      <div>
+                        <strong>Memo:</strong> {transaction.recipient.memo}
+                      </div>
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              </Card>
             )}
           </div>
         </div>
@@ -208,3 +206,4 @@ function ZellePage() {
 }
 
 export default ZellePage;
+
