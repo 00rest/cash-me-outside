@@ -103,7 +103,7 @@ export default function Login(props) {
               </div>
             ) : null}
             <div className="d-grid gap-2 mt-3">
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn btn-light" style={{ backgroundColor: "#01796F", color: "white" }}>
                 Login
               </button>
             </div>
@@ -172,7 +172,7 @@ export default function Login(props) {
             />
           </div>
           <div className="d-grid gap-2 mt-3">
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-light" style={{ backgroundColor: "#01796F", color: "white" }}>
               Submit
             </button>
           </div>

@@ -133,7 +133,7 @@ const WithdrawPage = () => {
             className="form-control"
           />
         </div>
-        <button type="submit" className="btn btn-primary">Transfer</button>
+        <button type="submit" className="btn btn-light" style={{ backgroundColor: "#01796F", color: "white" }}>Transfer</button>
       </form>
       <div style={{marginTop: "5ch"}}>
           <h3>Transaction History</h3>
