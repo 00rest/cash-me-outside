@@ -42,19 +42,17 @@ function ZellePage() {
       }
       return recipient;
     });
-  
+
     const transaction = {
       recipient: updatedRecipients[index],
       date: new Date().toLocaleString(),
     };
-  
+
     setRecipients(updatedRecipients);
     setTransactions([...transactions, transaction]);
     setShowAmountMemo(false);
     setError('');
   };
-  
-  
 
   return (
     <div className="container d-flex-column min-vh-100">
@@ -93,60 +91,72 @@ function ZellePage() {
             {recipients.length === 0 ? (
               <p>No Recipient has been added yet</p>
             ) : (
-            <ListGroup>
-              {recipients.map((recipient, index) => (
-                <ListGroup.Item key={index}>
-                  <div>
-                    <strong>Name:</strong> {recipient.name}
-                  </div>
-                  <div>
-                    <strong>Email:</strong> {recipient.email}
-                  </div>
-                  {!showAmountMemo && (
-                    <Button
-                      variant="light" style={{ backgroundColor: "#01796F", color: "white" }}
-                      onClick={() => setShowAmountMemo(true)}
-                    >
-                      Send Money
-                    </Button>
-                  )}
-                  {showAmountMemo && (
-                    <>
-                      <Row>
-                        <Col>
-                          <Form.Group controlId={`formAmount_${index}`}>
-                            <Form.Label>Amount</Form.Label>
-                            <Form.Control
-                              type="text"
-                              placeholder="Enter amount"
-                              value={amount}
-                              onChange={(e) => setAmount(e.target.value)}
-                            />
-                          </Form.Group>
-                        </Col>
-                        <Col>
-                          <Form.Group controlId={`formMemo_${index}`}>
-                            <Form.Label>Memo</Form.Label>
-                            <Form.Control
-                              type="text"
-                              placeholder="Enter memo"
-                              value={memo}
-                              onChange={(e) => setMemo(e.target.value)}
-                            />
-                          </Form.Group>
-                        </Col>
-                      </Row>
+              <ListGroup>
+                {recipients.map((recipient, index) => (
+                  <ListGroup.Item key={index}>
+                    <div>
+                      <strong>Name:</strong> {recipient.name}
+                    </div>
+                    <div>
+                      <strong>Email:</strong> {recipient.email}
+                    </div>
+                    {!showAmountMemo && (
                       <Button
                         variant="light" style={{ backgroundColor: "#01796F", color: "white" }}
-                        onClick={() => handleSendMoney(index)}
+                        onClick={() => setShowAmountMemo(index)}
                       >
-                        Confirm Send
+                        Send Money
                       </Button>
-                    </>
-                  )}
-                </ListGroup.Item>
-              ))}
-            </ListGroup>
+                    )}
+                    {showAmountMemo === index && (
+                      <>
+                        <Row>
+                          <Col>
+                            <Form.Group controlId={`formAmount_${index}`}>
+                              <Form.Label>Amount</Form.Label>
+                              <Form.Control
+                                type="text"
+                                placeholder="Enter amount"
+                                value={recipient.amount}
+                                onChange={(e) =>
+                                  setRecipients((prevRecipients) => {
+                                    const updatedRecipients = [...prevRecipients];
+                                    updatedRecipients[index].amount = e.target.value;
+                                    return updatedRecipients;
+                                  })
+                                }
+                              />
+                            </Form.Group>
+                          </Col>
+                          <Col>
+                            <Form.Group controlId={`formMemo_${index}`}>
+                              <Form.Label>Memo</Form.Label>
+                              <Form.Control
+                                type="text"
+                                placeholder="Enter memo"
+                                value={recipient.memo}
+                                onChange={(e) =>
+                                  setRecipients((prevRecipients) => {
+                                    const updatedRecipients = [...prevRecipients];
+                                    updatedRecipients[index].memo = e.target.value;
+                                    return updatedRecipients;
+                                  })
+                                }
+                              />
+                            </Form.Group>
+                          </Col>
+                        </Row>
+                        <Button
+                          variant="light" style={{ backgroundColor: "#01796F", color: "white" }}
+                          onClick={() => handleSendMoney(index)}
+                        >
+                          Confirm Send
+                        </Button>
+                      </>
+                    )}
+                  </ListGroup.Item>
+                ))}
+              </ListGroup>
             )}
           </div>
         </div>
@@ -156,29 +166,29 @@ function ZellePage() {
             {transactions.length === 0 ? (
               <p>No transactions has been made yet yet</p>
             ) : (
-            <Card style={{ backgroundColor: "#003366", color: "white" }}>
-              <ListGroup variant="flush">
-                {transactions.map((transaction, index) => (
-                  <ListGroup.Item key={index}>
-                    <div>
-                      <strong>Date:</strong> {transaction.date}
-                    </div>
-                    <div>
-                      <strong>Name:</strong> {transaction.recipient.name}
-                    </div>
-                    <div>
-                      <strong>Email:</strong> {transaction.recipient.email}
-                    </div>
-                    <div>
-                      <strong>Amount:</strong> {transaction.recipient.amount}
-                    </div>
-                    <div>
-                      <strong>Memo:</strong> {transaction.recipient.memo}
-                    </div>
-                  </ListGroup.Item>
-                ))}
-              </ListGroup>
-            </Card>
+              <Card style={{ backgroundColor: "#003366", color: "white" }}>
+                <ListGroup variant="flush">
+                  {transactions.map((transaction, index) => (
+                    <ListGroup.Item key={index}>
+                      <div>
+                        <strong>Date:</strong> {transaction.date}
+                      </div>
+                      <div>
+                        <strong>Name:</strong> {transaction.recipient.name}
+                      </div>
+                      <div>
+                        <strong>Email:</strong> {transaction.recipient.email}
+                      </div>
+                      <div>
+                        <strong>Amount:</strong> {transaction.recipient.amount}
+                      </div>
+                      <div>
+                        <strong>Memo:</strong> {transaction.recipient.memo}
+                      </div>
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              </Card>
             )}
           </div>
         </div>
@@ -188,3 +198,4 @@ function ZellePage() {
 }
 
 export default ZellePage;
+
