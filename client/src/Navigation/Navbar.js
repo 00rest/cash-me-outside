@@ -1,6 +1,8 @@
 import React from "react";
+import Auth from '../utils/auth';
 
 const Navbar = () => {
+
   return (
     <nav className="navbar navbar-expand-sm navbar-light" style={{ backgroundColor: "#003366", color: "white" }}>
       <a className="navbar-brand text-white" href="./home" style={{ marginLeft: 1 }}>
@@ -37,7 +39,7 @@ const Navbar = () => {
           </li>
           <li className="nav-item">
             <a
-              className="nav-link text-white"
+              className="nav-link text-white" onClick={Auth.logout}
               href="/"
             >
               Log Out

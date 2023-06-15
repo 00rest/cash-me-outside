@@ -102,12 +102,4 @@ const resolvers = {
   }
 }
 
-
-
 module.exports = resolvers;
-
-
-
-// let userData = { productCode: "4pf" }
-// let dataToBeUpdated = { claims: ["abc", "def"] }
-// ProductModel.findOneAndUpdate({ "products.productCode": userData.productCode }, { $set: { "products.$": dataToBeUpdated } })
