@@ -23,7 +23,7 @@ const HomePage = () => {
   // Store user accounts in session
 
   localStorage.setItem("user_accounts", JSON.stringify(userData.accounts || []));
-
+  localStorage.setItem("zelle_recipients", JSON.stringify(userData.zelleRecipients || []));
   return (
     <div className="container mt-5 d-flex-column min-vh-100">
       <h1 className="mb-4">Welcome, {userData.name}</h1>

@@ -49,9 +49,11 @@ class AuthService {
     localStorage.removeItem('user_id');
     localStorage.removeItem('user_name');
     localStorage.removeItem('user_accounts');
+    localStorage.removeItem('zelle_recipients');
     // this will reload the page and reset the state of the application
     window.location.assign('/');
   }
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default new AuthService();
