@@ -75,6 +75,68 @@ export const ADD_TRANSACTION = gql`
   }
 `;
 
+export const ADD_ZELLE_R_TRANSACTION = gql`
+
+  mutation createZelleRTransaction(
+    $email: String!,
+    $description: String!,
+    $type: String!,
+    $amount: Float!
+  ) {
+    createZelleRTransaction(
+      email: $email
+      description: $description
+      type: $type
+      amount: $amount
+    ) {
+      _id
+      accounts { 
+        _id
+        accountType
+        balance
+        transactions{
+          _id
+          description
+          date
+          transactionType
+          amount
+        }
+      }
+    }
+  }
+`;
+
+export const ADD_WIRE_R_TRANSACTION = gql`
+
+  mutation createWireRTransaction(
+    $accountNumber: ID!,
+    $description: String!,
+    $type: String!,
+    $amount: Float!
+  ) {
+    createWireRTransaction(
+      accountNumber: $accountNumber
+      description: $description
+      type: $type
+      amount: $amount
+    ) {
+      _id
+      accounts { 
+        _id
+        accountType
+        balance
+        transactions{
+          _id
+          description
+          date
+          transactionType
+          amount
+        }
+      }
+    }
+  }
+`;
+
 export const ADD_ZELLE_RECEPIENT = gql`
 
   mutation createZelleRecipient($id: ID!, $name: String!, $zelle_email: String!) {
@@ -83,6 +145,19 @@ export const ADD_ZELLE_RECEPIENT = gql`
         _id
         name
         zelle_email
+      }
+    }
+  }
+`;
+
+export const ADD_WIRE_RECEPIENT = gql`
+
+  mutation createWireRecipient($id: ID!, $name: String!, $accountNumber: String!) {
+    createWireRecipient(_id: $id, name: $name, accountNumber: $accountNumber) {
+      wireRecipients {
+        _id
+        name
+        accountNumber
       }
     }
   }

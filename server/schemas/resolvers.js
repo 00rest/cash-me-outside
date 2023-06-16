@@ -71,6 +71,14 @@ const resolvers = {
       );
     },
 
+    createWireRecipient: async (parent, { _id, accountNumber, name }) => {
+      return await User.findOneAndUpdate(
+        { _id: _id },
+        { $addToSet: { wireRecipients: { accountNumber, name } } },
+        { new: true }
+      );
+    },
+
     createTransaction: async (parent, { userID, accountID, description, type, amount }) => {
       const userRec = await User.findById(userID);
       const account = userRec.accounts.find(a => a._id == accountID);
@@ -98,6 +106,66 @@ const resolvers = {
       }
 
       return userRec;
+    },
+
+    createZelleRTransaction: async (parent, { email, description, type, amount }) => {
+      const userRec = await User.findOne({ email });
+      if (!user) {
+        throw error;;
+      }
+      const account = userRec.accounts[0];
+         
+      if (!!account) {
+        if (!account.transactions) {
+          account.transactions = [];
+        }
+        const newBalance = account.balance + amount;
+        account.transactions.push({
+          amount: amount,
+          balance: newBalance,
+          description: description,
+          date: new Date(),
+          transactionType: type
+        });
+
+        account.balance = newBalance;
+        userRec.save();
+      } else {
+        throw "Account not found";
+      }
+
+      return userRec;
+    
+    },
+    
+    createZelleRTransaction: async (parent, { accountNumber, description, type, amount }) => {
+      const userRec = await User.findById(accountNumber);
+      if (!user) {
+        throw error;;
+      }
+      const account = userRec.accounts[0];
+         
+      if (!!account) {
+        if (!account.transactions) {
+          account.transactions = [];
+        }
+        const newBalance = account.balance + amount;
+        account.transactions.push({
+          amount: amount,
+          balance: newBalance,
+          description: description,
+          date: new Date(),
+          transactionType: type
+        });
+
+        account.balance = newBalance;
+        userRec.save();
+      } else {
+        throw "Account not found";
+      }
+
+      return userRec;
+    
     },
   }
 }

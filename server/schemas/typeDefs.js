@@ -62,6 +62,8 @@ type Mutation {
   createAccount(_id: ID!, accountType: String!, balance: Float!): User
   
   createZelleRecipient(_id: ID!, zelle_email: String!, name: String!): User
+
+  createWireRecipient(_id: ID!, accountNumber: String!, name: String!): User
   
   createTransaction(
     userID: ID!,
@@ -69,6 +71,20 @@ type Mutation {
     description: String!,
     type: String!,
     amount: Float
+  ): User
+
+  createZelleRTransaction(
+    email: String!,
+    description: String!,
+    type: String!,
+    amount: Float!
+  ): User
+
+  createWireRTransaction(
+    accountNumber: ID!,
+    description: String!,
+    type: String!,
+    amount: Float!
   ): User
 
 }
