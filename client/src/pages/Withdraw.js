@@ -17,7 +17,8 @@ const WithdrawPage = () => {
       accountType: a.accountType,
       senderAccount: a._id
     })))
-  .flat();
+   .flat()
+   .filter(t => t.transactionType === 'CASH');;
 
   const [senderAccount, setsenderAccount] = useState('') //!!accounts && !!accounts.length ? accounts[0]._id : '');
   const [amount, setAmount] = useState(0);
@@ -74,7 +75,7 @@ const WithdrawPage = () => {
         
         console.log(mutationResponse.data.createTransaction.accounts);
         const newModel = _mapAccountsToViewModel(mutationResponse.data.createTransaction.accounts);
-        console.log("NEW MOEL: ", newModel);
+        console.log("NEW MODEL: ", newModel);
         updateAccounts(newModel);
 
         localStorage.setItem("user_accounts", JSON.stringify(mutationResponse.data.createTransaction.accounts || []));
@@ -105,22 +106,21 @@ const WithdrawPage = () => {
 
   return (
     <div className="container mt-5 d-flex-column min-vh-100  col-md-8">
+      
       <h1 className="mb-4">Withdraw Money</h1>
+      
       {error && <div className="alert alert-danger">{error}</div>}
+      
       <form onSubmit={handleTransfer}>
+        
         <div className="mb-3">
           <label htmlFor="senderAccount" className="form-label" style={{marginRight: "2ch" }}>From Account:</label>
+          
           <select name='senderAccount' id='senderAccount' value={senderAccount} onChange={(e) => setsenderAccount(e.target.value)}>
             <option value="">(Please select an account)</option>
             {accounts.map(a => <option key={a._id} value={a._id}>({a.accountType.toUpperCase()}) - {a._id}: ${a.balance}</option>)}
           </select>
-          {/* <input
-            type="text"
-            id="senderAccount"
-            value={senderAccount}
-            onChange={(e) => setsenderAccount(e.target.value)}
-            className="form-control"
-          /> */}
+
         </div>
 
         <div className="mb-3">
@@ -133,8 +133,12 @@ const WithdrawPage = () => {
             className="form-control"
           />
         </div>
+        
         <button type="submit" className="btn btn-light" style={{ backgroundColor: "#01796F", color: "white" }}>Transfer</button>
+      
       </form>
+
+
       <div style={{marginTop: "5ch"}}>
           <h3>Transaction History</h3>
           <ul className="list-group">

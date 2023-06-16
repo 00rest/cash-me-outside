@@ -50,6 +50,9 @@ class AuthService {
     localStorage.removeItem('user_name');
     localStorage.removeItem('user_accounts');
     localStorage.removeItem('zelle_recipients');
+    localStorage.removeItem('wire_recipients');
+    localStorage.removeItem('wire_transaction_history');
+    localStorage.removeItem('transaction_history');
     // this will reload the page and reset the state of the application
     window.location.assign('/');
   }
