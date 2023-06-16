@@ -14,6 +14,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import auth from './utils/auth';
 import NewAccount from './pages/NewAccount';
 
+
 const client = new ApolloClient({
   uri: '/graphql',
   cache: new InMemoryCache(),
