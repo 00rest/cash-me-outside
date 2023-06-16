@@ -74,3 +74,16 @@ export const ADD_TRANSACTION = gql`
     }
   }
 `;
+
+export const ADD_ZELLE_RECEPIENT = gql`
+
+  mutation createZelleRecipient($id: ID!, $name: String!, $zelle_email: String!) {
+    createZelleRecipient(_id: $id, name: $name, zelle_email: $zelle_email) {
+      zelleRecipients {
+        _id
+        name
+        zelle_email
+      }
+    }
+  }
+`;
