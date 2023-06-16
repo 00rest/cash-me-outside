@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useApolloClient } from "@apollo/client";
 import { ADD_ZELLE_RECEPIENT, ADD_TRANSACTION, ADD_ZELLE_R_TRANSACTION } from '../utils/mutations';
 import { Form, Button, ListGroup, Row, Col, Card, Alert } from 'react-bootstrap';

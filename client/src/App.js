@@ -2,7 +2,6 @@ import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./Navigation/Navbar.js";
 import Home from './pages/Home.js';
-import { Orest, Orest2, Orest3 } from './pages/orest.js';
 import Transfer from './pages/Transfer.js';
 import Accounts from './pages/Accounts.js';
 import Withdraw from './pages/Withdraw.js';
@@ -37,9 +36,6 @@ function App() {
             <Route path='/transfer' element={<Transfer />} />
             <Route path='/getcash' element={<Withdraw />} />
             <Route path='/zelle' element={<Zelle />} />
-            <Route path='/orest' element={<Orest />} />
-            <Route path='/orest2' element={<Orest2 />} />
-            <Route path='/orest3' element={<Orest3 />} />
             <Route path='/accountactivity' element={<Accounts />} />
             <Route path='/new-account' element={<NewAccount />} />
           </Routes>}
